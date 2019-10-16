@@ -62,9 +62,110 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-test-hexo-blog" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mac环境Hexo-Github搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/10/12/test-hexo-blog/" class="article-date">
+    <a href="/2019/10/16/Mac环境Hexo-Github搭建博客/" class="article-date">
+  <time datetime="2019-10-16T09:55:52.000Z" itemprop="datePublished">2019-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/16/Mac环境Hexo-Github搭建博客/">Mac环境Hexo+Github搭建博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本使用命令"><a href="#基本使用命令" class="headerlink" title="基本使用命令"></a>基本使用命令</h2><ol>
+<li><code>hexo g</code> 生成博客网页文件</li>
+<li><code>hexo s</code> 启动本地服务,预览博客</li>
+<li><code>hexo d</code> 上传网页文件到github</li>
+<li><code>hexo new post &quot;article title&quot;</code> 创建博文文件</li>
+</ol>
+<h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><ol>
+<li><p><a href="#build_blog_1">安装node.js</a></p>
+</li>
+<li><p>安装git，并配置git账号信息</p>
+</li>
+<li><p>注册github账号并创建项目</p>
+<ul>
+<li><strong>注：</strong>项目名称必须为 github名称.github.io</li>
+<li>在 <code>项目-&gt;Settings-&gt;Source</code>选择为 <code>master branch</code></li>
+</ul>
+</li>
+<li><p>安装Hexo,并创建本地博客项目</p>
+<ul>
+<li>创建博客维护文件夹，并切换至文件夹下</li>
+<li>在控制台中进行操作<ul>
+<li><code>npm i hexo-cli -g</code> 进行安装hexo</li>
+<li><code>hexo -v</code>验证安装是否成功</li>
+<li><code>hexo init</code>初始化文件夹，注意要在你创建的博客维护文件夹下</li>
+<li><code>npm install</code> 安装必备的组件</li>
+<li><code>hexo g</code>生成静态页面</li>
+<li><code>hexo s</code> 打开本地服务器，<code>http://localhost:4000/</code>查看博客</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>连接Github与本地博客文件夹</p>
+<ul>
+<li>修改博客文件夹根目录下 <code>_config.yml</code>文件</li>
+<li>找到<code>deploy</code>进行修改  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repository: 项目Clone地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>写文章与发布文章</p>
+<ul>
+<li>安装扩展 <code>npm i hexo-deployer-git</code></li>
+<li><code>hexo new post &quot;article title&quot;</code> 新建一篇文章</li>
+<li>在 <code>博客目录\source\_posts</code> 找到新建的文件进行编辑</li>
+<li><code>hexo g</code> 生成静态页面</li>
+<li><code>hexo s</code> 本地预览</li>
+<li><code>hexo d</code> 上传到github</li>
+</ul>
+</li>
+</ol>
+<h3 id="build_blog_1">安装node.js</h3>
+Mac下安装方式，参考文章[[Node.js]在mac上安装node.js](https://www.jianshu.com/p/3b30c4c846d1)
+
+
+
+<hr>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="1-使用自己的域名"><a href="#1-使用自己的域名" class="headerlink" title="1. 使用自己的域名"></a>1. 使用自己的域名</h3><ol>
+<li>在 <code>[local_blog_path]/source</code> 新建 CNAME文件,填写自己的域名</li>
+<li>在自己申请域名的网站，设置域名解析</li>
+</ol>
+<h3 id="2-博客维护设备转移"><a href="#2-博客维护设备转移" class="headerlink" title="2. 博客维护设备转移"></a>2. 博客维护设备转移</h3><ul>
+<li>多个设备如何同时维护一个博客</li>
+<li>如何更换设备重新维护博客</li>
+</ul>
+<hr>
+<p>参考文章:<br><a href="https://hexo.io/docs/" target="_blank" rel="noopener">hexo官方文档</a><br><a href="https://godweiyang.com/2018/04/13/hexo-blog/#toc-heading-7" target="_blank" rel="noopener">超详细Hexo+Github博客搭建小白教程</a><br><a href="https://blog.csdn.net/u011475210/article/details/79023429" target="_blank" rel="noopener">我的个人博客之旅：从jekyll到hexo</a><br><a href="https://blog.csdn.net/xudailong_blog/article/details/78762262" target="_blank" rel="noopener">Github搭建个人博客</a><br><a href="https://juejin.im/post/5a71a4f9518825733a3105ac" target="_blank" rel="noopener">GitHub Pages自定义域名</a><br><a href="https://github.com/HarleyWang93/blog/issues/1" target="_blank" rel="noopener">Hexo + GitHub (Coding) Pages 搭建博客</a><br><a href="https://zhuanlan.zhihu.com/p/22498474" target="_blank" rel="noopener">Hexo(2)-部署博客及更新博文</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/16/Mac环境Hexo-Github搭建博客/" data-id="ck1t4lwl60001jjkzdvg8a7l7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ndk开发流程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/12/ndk开发流程/" class="article-date">
   <time datetime="2019-10-12T09:25:30.000Z" itemprop="datePublished">2019-10-12</time>
 </a>
     
@@ -76,7 +177,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/12/test-hexo-blog/">ndk开发流程</a>
+      <a class="article-title" href="/2019/10/12/ndk开发流程/">ndk开发流程</a>
     </h1>
   
 
@@ -151,56 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/12/test-hexo-blog/" data-id="ck1psf5t30001z0kzo2nk5hnm" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/12/hello-world/" class="article-date">
-  <time datetime="2019-10-12T09:09:19.896Z" itemprop="datePublished">2019-10-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/12/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/12/hello-world/" data-id="ck1psf5sy0000z0kzcs39pm51" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/12/ndk开发流程/" data-id="ck1t4lwl00000jjkzoimug5ig" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,11 +293,11 @@
       <ul>
         
           <li>
-            <a href="/2019/10/12/test-hexo-blog/">ndk开发流程</a>
+            <a href="/2019/10/16/Mac环境Hexo-Github搭建博客/">Mac环境Hexo+Github搭建博客</a>
           </li>
         
           <li>
-            <a href="/2019/10/12/hello-world/">Hello World</a>
+            <a href="/2019/10/12/ndk开发流程/">ndk开发流程</a>
           </li>
         
       </ul>
