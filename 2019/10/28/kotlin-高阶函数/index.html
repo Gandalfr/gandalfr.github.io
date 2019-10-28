@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>kotlin 高阶函数 | Huasababy</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.9/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>Huasababy's Blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;首页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/blog/categories/"
+            
+              rel="nofollow"
+            
+            
+            id="blogcategories">
+            <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/blog/tags/"
+            
+              rel="nofollow"
+            
+            
+            id="blogtags">
+            <i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          Huasababy
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/blog/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogcategories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogtags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/10/28/kotlin-高阶函数/">
+        kotlin 高阶函数
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://yoursite.com" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>Huasababy</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-10-28</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/kotlin/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>kotlin</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>在看以kotlin写的开源项目时，对高阶函数的使用抱有很多疑问，因为使用了lambda表达式，各种缩紧的写法，看代码时被高的一头雾水。于是便进行了学习。文章主要根据官方文档，对kotlin高阶函数的概念及语法进行了介绍，日后也可作为查阅的资料。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>高阶函数，指使用函数作为参数或是返回值的函数</p>
+</blockquote>
+<h2 id="1-初窥门径"><a href="#1-初窥门径" class="headerlink" title="1. 初窥门径"></a>1. 初窥门径</h2><blockquote>
+<p>我们先看一下官方提供的范例，来了解一下高阶函数</p>
+</blockquote>
+<p>这个范例使用的是fold函数，它的功能是将规定的初始值与容器中的值通过传入的combine函数，返回构建后的结构，以下是fold函数的源码</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T, R&gt;</span> Collection<span class="type">&lt;T&gt;</span>.<span class="title">fold</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    initial: <span class="type">R</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">    combine: (<span class="type">acc</span>: <span class="type">R</span>, <span class="type">nextElement</span>: <span class="type">T</span>) -&gt; <span class="type">R</span></span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>: R &#123;</span><br><span class="line">    <span class="keyword">var</span> accumulator: R = initial</span><br><span class="line">    <span class="keyword">for</span> (element: T <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</span><br><span class="line">        accumulator = combine(accumulator, element)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> accumulator</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从源码中可以看到，combine函数将会使初始值作为累加器和容器中的值进行操作，最后将累加器的值返回，以下是使用的例子：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">fold_function_test</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> list = ArrayList&lt;String&gt;()</span><br><span class="line"></span><br><span class="line">        list.add(<span class="string">"b"</span>)</span><br><span class="line">        list.add(<span class="string">"c"</span>)</span><br><span class="line">        list.add(<span class="string">"d"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> combine1 = &#123; a:String,b:String -&gt; a+b &#125;</span><br><span class="line">        <span class="keyword">val</span> result1 = list.fold(<span class="string">"a"</span>, combine1)</span><br><span class="line"></span><br><span class="line">        assertEquals(<span class="string">"abcd"</span>,result1)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> combine2 = &#123;</span><br><span class="line">                a:String,b:String-&gt;</span><br><span class="line">            <span class="keyword">if</span>(a&lt;b)&#123;a&#125;<span class="keyword">else</span>&#123;b&#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> result2 = list.fold(<span class="string">"a"</span>,combine2)</span><br><span class="line">        assertEquals(result2,<span class="string">"a"</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是,函数作为参数传递时，需要使用函数类型(Function types)进行传递</p>
+<h3 id="1-1-函数类型-Function-types"><a href="#1-1-函数类型-Function-types" class="headerlink" title="1.1 函数类型(Function types)"></a>1.1 函数类型(Function types)</h3><blockquote>
+<p>当函数作为参数或是返回值时，需要使用函数类型(Function types)的方式进行定义</p>
+</blockquote>
+<h4 id="函数类型的使用情形"><a href="#函数类型的使用情形" class="headerlink" title="函数类型的使用情形"></a>函数类型的使用情形</h4><blockquote>
+<p>如果想将函数作为参数，或是返回值返回，可以使用下面的方式来申明函数类型</p>
+</blockquote>
+<p>下面情形中的示例代码主要为方便理解，进行的语法展示，不具有实际的使用意义</p>
+<ol>
+<li><p>在函数体中使用如下代码块</p>
+<ul>
+<li>lambda表达式 : <code>{a,b -&gt; a+b}</code></li>
+<li>无名函数(an anonymous function) : <code>fun(s:String):Int {return s.toIntOrNull()?:0}</code><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">fold_function_test</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> list = ArrayList&lt;String&gt;()</span><br><span class="line"></span><br><span class="line">    list.add(<span class="string">"b"</span>)</span><br><span class="line">    list.add(<span class="string">"c"</span>)</span><br><span class="line">    list.add(<span class="string">"d"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> combine1 = &#123; a:String,b:String -&gt; a+b &#125;</span><br><span class="line">    <span class="keyword">val</span> result1 = list.fold(<span class="string">"a"</span>, combine1)</span><br><span class="line"></span><br><span class="line">    assertEquals(<span class="string">"abcd"</span>,result1)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> combine2 =</span><br><span class="line">        <span class="function"><span class="title">fun</span><span class="params">( a:<span class="type">String</span>,b:<span class="type">String</span>)</span></span>:String&#123;</span><br><span class="line">                    <span class="keyword">if</span>(a&lt;b)&#123;</span><br><span class="line">                        <span class="keyword">return</span> a</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> b</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result2 = list.fold(<span class="string">"a"</span>,combine2)</span><br><span class="line">    assertEquals(result2,<span class="string">"a"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>引用已经存在的函数</p>
+<ul>
+<li><p>全局、局部成员，扩展函数： <code>::convertToZero</code>-<code>convertToZero</code>是定义的一个函数,<code>String::toInt</code></p>
+  <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试辅助类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HigherOrderFunctionHelper</span></span>() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">existFunction</span><span class="params">(method:(<span class="type">String</span>)-&gt;<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> method(<span class="string">"10"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//单元测试1</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">call_exist_function_test_1</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> obj = HigherOrderFunctionHelper()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result = obj.existFunction(String::toInt)</span><br><span class="line"></span><br><span class="line">    assertEquals(<span class="number">10</span>,result)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//单元测试2</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">call_exist_function_test_2</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> obj = HigherOrderFunctionHelper()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result = obj.existFunction(::convertToZero)</span><br><span class="line"></span><br><span class="line">    assertEquals(<span class="number">0</span>,result)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//该方法可定义在任意 .kt 文件中</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">convertToZero</span><span class="params">(str:<span class="type">String</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>全局，成员的扩展属性:<code>List&lt;Int&gt;::size</code></p>
+  <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试辅助类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HigherOrderFunctionHelper</span></span>() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">listPropertyFunction</span><span class="params">(method:(<span class="type">List</span>&lt;<span class="type">Int</span>&gt;)-&gt;<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> list = ArrayList&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line">        list.add(<span class="number">0</span>)</span><br><span class="line">        list.add(<span class="number">1</span>)</span><br><span class="line">        list.add(<span class="number">2</span>)</span><br><span class="line">        list.add(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> method(list)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试方法</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">call_exist_function_test_3</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> obj = HigherOrderFunctionHelper()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> sizeProperty = List&lt;<span class="built_in">Int</span>&gt;::size</span><br><span class="line">    <span class="keyword">val</span> result = obj.listPropertyFunction(sizeProperty)</span><br><span class="line"></span><br><span class="line">    assertEquals(<span class="number">4</span>,result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数作为函数类型传递  <code>::HigherOrderFunctionHelper</code></p>
+  <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//辅助类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HigherOrderFunctionHelper</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> param1:Any</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(param1:Any) : <span class="keyword">this</span>() &#123;</span><br><span class="line">        <span class="keyword">this</span>.param1 = param1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">output</span><span class="params">()</span></span>:Any&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(::param1.isInitialized)&#123;</span><br><span class="line">            <span class="keyword">return</span> param1</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">throw</span> UninitializedPropertyAccessException(<span class="string">"param1 has not been initialized"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 单元测试</span></span><br><span class="line"><span class="comment"> * 注意: 类中有两个构造函数的情况，这里申明变量时，指定使用的函数类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test(expected = UninitializedPropertyAccessException::class)</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">class_constructor_as_param_1</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> <span class="keyword">constructor</span>:()-&gt;HigherOrderFunctionHelper = ::HigherOrderFunctionHelper</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> helper = <span class="keyword">constructor</span>()</span><br><span class="line"></span><br><span class="line">    helper.output()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">class_constructor_as_param_2</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> constructor2:(param:Any)-&gt;HigherOrderFunctionHelper = ::HigherOrderFunctionHelper</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> helper2 = constructor2(<span class="string">"test"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result2 = helper2.output()</span><br><span class="line"></span><br><span class="line">    assertEquals(<span class="string">"test"</span>,result2)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一种特殊的情形是，使用某一个对象所具有的方法 <code>helper::output</code>,这里同样要注意函数存在重构的情况下，如何去获取</p>
+</li>
+</ul>
+</li>
+<li><p>将函数类型作为接口继承的自定义类</p>
+ <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义类，该类必须实现 invoke方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FunctionTypeCustomClass</span> : <span class="type"></span></span>(<span class="built_in">Int</span>)-&gt;<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">invoke</span><span class="params">(param1: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> param1*<span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试辅助类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HigherOrderFunctionHelper</span></span>() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">exeInt2Int</span><span class="params">(method:(<span class="type">Int</span>)-&gt;<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> method(<span class="number">10</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//单元测试</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">custom_class_implement_function_type_test</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> obj = HigherOrderFunctionHelper()</span><br><span class="line">    <span class="keyword">val</span> result = obj.exeInt2Int(FunctionTypeCustomClass())</span><br><span class="line"></span><br><span class="line">    assertEquals(<span class="number">100</span>,result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h5 id="调用一个函数类型的情形"><a href="#调用一个函数类型的情形" class="headerlink" title="调用一个函数类型的情形"></a>调用一个函数类型的情形</h5><p>一个函数类型的值，可以通过<code>f.invoke(x)</code>或者<code>f(x)</code>被调用。</p>
+<h5 id="inline函数"><a href="#inline函数" class="headerlink" title="inline函数"></a>inline函数</h5><p>当需要为高阶函数提供灵活的控制流时，使用 inline函数是十分有益的。可查看<a href="https://kotlinlang.org/docs/reference/inline-functions.html" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="1-2-Lambda表达式和匿名函数-Lambda-Expression-and-Anonymous-Functions"><a href="#1-2-Lambda表达式和匿名函数-Lambda-Expression-and-Anonymous-Functions" class="headerlink" title="1.2 Lambda表达式和匿名函数 (Lambda Expression and Anonymous Functions)"></a>1.2 Lambda表达式和匿名函数 (Lambda Expression and Anonymous Functions)</h3><blockquote>
+<p>下面介绍一些 Lambda表达式以及匿名函数中的基本概念以及使用方法，有些已经在上述的示例中使用了</p>
+</blockquote>
+<h4 id="Lambda表达式语法"><a href="#Lambda表达式语法" class="headerlink" title="Lambda表达式语法"></a>Lambda表达式语法</h4><ol>
+<li>Lambda表达式被花括号包裹</li>
+<li><code>-&gt;</code>符号，分割了表达式的参数与逻辑体</li>
+<li>逻辑体默认最后一行表示返回值,如果定义了返回结果为 Unit，则返回Unit类型</li>
+<li>定义函数类型变量与Lambda表达式进行匹配 <code>val lambda:(Int,Int)-&gt;Int = {a:Int,b:Int -&gt; a+b}</code></li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">lambda_test</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> lambda1:(<span class="built_in">Int</span>,<span class="built_in">Int</span>)-&gt;<span class="built_in">Int</span> = &#123;a:<span class="built_in">Int</span>,b:<span class="built_in">Int</span>-&gt;</span><br><span class="line">        <span class="keyword">val</span> param1 = a*<span class="number">2</span></span><br><span class="line">        <span class="keyword">val</span> param2 = b*<span class="number">2</span></span><br><span class="line">        param1+param2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result1 = lambda1(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">    assertEquals(<span class="number">6</span>,result1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> lambda2:(<span class="built_in">Int</span>,<span class="built_in">Int</span>)-&gt;<span class="built_in">Unit</span> = &#123;a:<span class="built_in">Int</span>,b:<span class="built_in">Int</span>-&gt;</span><br><span class="line">        <span class="keyword">val</span> param1 = a*<span class="number">2</span></span><br><span class="line">        <span class="keyword">val</span> param2 = b*<span class="number">2</span></span><br><span class="line">        param1+param2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result2 = lambda2(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    assertThat(<span class="built_in">Unit</span>,`<span class="keyword">is</span>`(result2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="lambda-表达式作为最后一个参数"><a href="#lambda-表达式作为最后一个参数" class="headerlink" title="lambda 表达式作为最后一个参数"></a>lambda 表达式作为最后一个参数</h4><ol>
+<li>如果是单参数，则可以省略括号</li>
+<li>如果是作为最后一个参数时，可以放到括号外面</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">fun singleParam(method:(Int)-&gt;Int):Int&#123;</span><br><span class="line">    return method(2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun multiParam(initial:Int,method:(Int)-&gt;Int):Int&#123;</span><br><span class="line">    return method(initial)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Test</span><br><span class="line">fun lambda_as_last_param_test_1() &#123;</span><br><span class="line">    val result = singleParam &#123; it * 2 &#125;</span><br><span class="line">    assertEquals(4,result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Test</span><br><span class="line">fun lambda_as_last_param_test_2() &#123;</span><br><span class="line">    val result = multiParam(10) &#123; it * 2 &#125;</span><br><span class="line">    assertEquals(20,result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="it-指代Lambda表达式中，单独一个参数的情况"><a href="#it-指代Lambda表达式中，单独一个参数的情况" class="headerlink" title="it: 指代Lambda表达式中，单独一个参数的情况"></a>it: 指代Lambda表达式中，单独一个参数的情况</h4><p><code>ints.filter { it &gt; 0 } // this literal is of type &#39;(it: Int) -&gt; Boolean&#39;</code></p>
+<h4 id="通过lambda表达式返回一个值"><a href="#通过lambda表达式返回一个值" class="headerlink" title="通过lambda表达式返回一个值"></a>通过lambda表达式返回一个值</h4><p>以下两种方式可以定义lambda表达式的返回体</p>
+<ol>
+<li>逻辑体默认最后一行表示返回值</li>
+<li><code>return@函数名 returnValue</code></li>
+</ol>
+<h4 id="使用下划线表示不用的参数"><a href="#使用下划线表示不用的参数" class="headerlink" title="使用下划线表示不用的参数"></a>使用下划线表示不用的参数</h4><p>如果lambda表达式中，逻辑中有不用的参数，可以使用 <code>_</code>来代替不用的参数</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">singleParamUnused</span><span class="params">(initial:<span class="type">Int</span>,method:(<span class="type">String</span>,<span class="type">Int</span>)-&gt;<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> method(<span class="string">""</span>,initial)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">multiParamUnused</span><span class="params">(initial:<span class="type">Int</span>,method:(<span class="type">String</span>,<span class="type">Int</span>,<span class="type">String</span>)-&gt;<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> method(<span class="string">""</span>,initial,<span class="string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">lambda_has_unused_variable</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> lambda:(String,<span class="built_in">Int</span>)-&gt;<span class="built_in">Int</span> = &#123;_,param -&gt; param*<span class="number">10</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result = singleParamUnused(<span class="number">10</span>, lambda)</span><br><span class="line">    assertEquals(<span class="number">100</span>,result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">lambda_has_unused_variable_2</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> lambda:(String,<span class="built_in">Int</span>,String)-&gt;<span class="built_in">Int</span> = &#123;_,param,_ -&gt; param*<span class="number">10</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result = multiParamUnused(<span class="number">10</span>, lambda)</span><br><span class="line">    assertEquals(<span class="number">100</span>,result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="解构声明-Destructuring-Declarations"><a href="#解构声明-Destructuring-Declarations" class="headerlink" title="解构声明(Destructuring Declarations)"></a>解构声明(Destructuring Declarations)</h4><p>相关内容请查看<a href="https://kotlinlang.org/docs/reference/multi-declarations.html#destructuring-in-lambdas-since-11" target="_blank" rel="noopener">官方文档</a></p>
+<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p>与Lambda表达式相比，匿名函数可以清晰的定义返回值的类型</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">fun</span><span class="params">(x:<span class="type">Int</span>,y:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span> = x + y</span><br></pre></td></tr></table></figure>
+
+<h4 id="有关闭包"><a href="#有关闭包" class="headerlink" title="有关闭包"></a>有关闭包</h4><p>变量声明在闭包外，这些变量可以在闭包内被捕获，并能够在Lambda表达式中被修改。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = <span class="number">0</span></span><br><span class="line">ints.filter &#123; it &gt; <span class="number">0</span> &#125;.forEach &#123;</span><br><span class="line">    sum += it</span><br><span class="line">&#125;</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Function-literals-with-receiver"><a href="#Function-literals-with-receiver" class="headerlink" title="Function literals with receiver"></a>Function literals with receiver</h4><p>表示方式 <code>A.(B) -&gt; C</code>,可以使用两种方式进行申明：</p>
+<ol>
+<li>Lambda表达式 <code>val sum: Int.(Int)-&gt; Int = {other -&gt; plus(other)}</code></li>
+<li>匿名函数 <code>val sum = fun Int.(other:Int):Int = this + other</code></li>
+</ol>
+<p>下面例子简单介绍了这种情况:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">function_literal_with_receiver_test1</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> func:String.(<span class="built_in">Int</span>)-&gt;String = &#123; times -&gt;<span class="keyword">this</span>.repeat(times) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> str = <span class="string">"test"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> repeat:(String,<span class="built_in">Int</span>)-&gt;String = func</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result = repeat(str, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    assertEquals(<span class="string">"testtesttest"</span>,result)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">repeat</span><span class="params">(method:<span class="type">String</span>.(<span class="type">Int</span>)-&gt;<span class="type">String</span>)</span></span>:String&#123;</span><br><span class="line">    <span class="keyword">val</span> str = <span class="string">"hehe!"</span></span><br><span class="line">    <span class="keyword">return</span> str.method(<span class="number">3</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">function_literal_with_receiver_test2</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> func:String.(<span class="built_in">Int</span>)-&gt;String = &#123; times -&gt;<span class="keyword">this</span>.repeat(times) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> result = repeat(func)</span><br><span class="line">    assertEquals(<span class="string">"hehe!hehe!hehe!"</span>,result)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h3><p>第一部分根据官方文档，介绍了高阶函数的定义以及各类情况，并提供了简单的例子。但是放在实际项目中该如何使用还需要更进一步的思考。</p>
+<hr>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="https://kotlinlang.org/docs/reference/lambdas.html" target="_blank" rel="noopener">Higher-Order Functions and Lambdas</a><br><a href="https://juejin.im/post/5b198c675188257d7a49b3ec" target="_blank" rel="noopener">Kotlin——高级篇（二）：高阶函数详解与标准的高阶函数使用</a></p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-28T19:45:00+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年10月28日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/kotlin/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>kotlin</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/10/16/Mac环境Hexo-Github搭建博客/" rel="prev" title="Mac环境Hexo+Github搭建博客">
+                                  
+                                      Mac环境Hexo+Github搭建博客
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/Other/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Other</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'kotlin 高阶函数',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/lueho110@gmail.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/Gandalfr"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-初窥门径"><span class="toc-text">1. 初窥门径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-函数类型-Function-types"><span class="toc-text">1.1 函数类型(Function types)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数类型的使用情形"><span class="toc-text">函数类型的使用情形</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#调用一个函数类型的情形"><span class="toc-text">调用一个函数类型的情形</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#inline函数"><span class="toc-text">inline函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Lambda表达式和匿名函数-Lambda-Expression-and-Anonymous-Functions"><span class="toc-text">1.2 Lambda表达式和匿名函数 (Lambda Expression and Anonymous Functions)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Lambda表达式语法"><span class="toc-text">Lambda表达式语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lambda-表达式作为最后一个参数"><span class="toc-text">lambda 表达式作为最后一个参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#it-指代Lambda表达式中，单独一个参数的情况"><span class="toc-text">it: 指代Lambda表达式中，单独一个参数的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过lambda表达式返回一个值"><span class="toc-text">通过lambda表达式返回一个值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用下划线表示不用的参数"><span class="toc-text">使用下划线表示不用的参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解构声明-Destructuring-Declarations"><span class="toc-text">解构声明(Destructuring Declarations)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#匿名函数"><span class="toc-text">匿名函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有关闭包"><span class="toc-text">有关闭包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Function-literals-with-receiver"><span class="toc-text">Function literals with receiver</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-小结"><span class="toc-text">1.3 小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关资料"><span class="toc-text">相关资料</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/blog/archives/" href="/blog/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="blogarchives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          文章归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于小站
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/Android/" href="/categories/Android/"><div class='name'>Android</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/Android/NDK/" href="/categories/Android/NDK/"><div class='name'>NDK</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Other/" href="/categories/Other/"><div class='name'>Other</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/kotlin/" href="/categories/kotlin/"><div class='name'>kotlin</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/Android/" style="font-size: 14px; color: #999">Android</a> <a href="/tags/NDK/" style="font-size: 14px; color: #999">NDK</a> <a href="/tags/Other/" style="font-size: 14px; color: #999">Other</a> <a href="/tags/kotlin/" style="font-size: 14px; color: #999">kotlin</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;推荐学习</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="http://www.extremeprogramming.cn/content/xp/user-story.html" href="http://www.extremeprogramming.cn/content/xp/user-story.html"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;极限编程
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/lueho110@gmail.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/Gandalfr"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
