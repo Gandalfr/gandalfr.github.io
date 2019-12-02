@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives | Huasababy</title>
+  <title>单元测试学习笔记 | Huasababy</title>
   
   
 
@@ -44,7 +44,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover  half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>Huasababy's Blog</h1>
@@ -195,73 +195,293 @@
   <div class="l_body">
     <div class='body-wrapper'>
       <div class='l_main'>
-	
-	  <article id="archive-page" class="post article white-box">
-	    <section class="archive">
-	      
-	          <div class="archive-item archive-year mark">
-	            <h2>2019</h2>
-	          </div>
-	      
-	          <div class="archive-item archive-post mark">
-	            <a href="/2019/12/02/单元测试学习笔记/">
-	              <time>12-02</time>
-	              <span class="title">
-	                
-	                  单元测试学习笔记
-	                
-	                
-									
-									
-	              </span>
-	            </a>
-	          </div>
-	      
-	          <div class="archive-item archive-post mark">
-	            <a href="/2019/10/28/kotlin-高阶函数/">
-	              <time>10-28</time>
-	              <span class="title">
-	                
-	                  kotlin 高阶函数
-	                
-	                
-									
-									
-	              </span>
-	            </a>
-	          </div>
-	      
-	          <div class="archive-item archive-post mark">
-	            <a href="/2019/10/16/Mac环境Hexo-Github搭建博客/">
-	              <time>10-16</time>
-	              <span class="title">
-	                
-	                  Mac环境Hexo+Github搭建博客
-	                
-	                
-									
-									
-	              </span>
-	            </a>
-	          </div>
-	      
-	          <div class="archive-item archive-post mark">
-	            <a href="/2019/10/12/ndk开发流程/">
-	              <time>10-12</time>
-	              <span class="title">
-	                
-	                  ndk开发流程
-	                
-	                
-									
-									
-	              </span>
-	            </a>
-	          </div>
-	      
-	    </section>
-	  </article>
-	
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/12/02/单元测试学习笔记/">
+        单元测试学习笔记
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://yoursite.com" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>Huasababy</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-12-02</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Android/TDD/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Android&nbsp;/&nbsp;TDD</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>本文主要介绍开始单元测试的一些思路。自从接触了测试驱动开发，一直想在Android开发时引入单元测试来提高开发的效率与质量。国内在单元测试方面的实践经验不太容易找，本篇文章是在大佬的博文基础上做了一些整理。</p>
+<a id="more"></a>
+
+<h1 id="单元测试学习笔记"><a href="#单元测试学习笔记" class="headerlink" title="单元测试学习笔记"></a>单元测试学习笔记</h1><blockquote>
+<p>持续更新</p>
+</blockquote>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><ol>
+<li>什么是单元测试<ul>
+<li>对于OOP领域 指一个类的一个方法，即测试摸一个类的某一个方法是否能正常工作</li>
+<li>测试的类只关注对 共有方法，非共有方法是类内部的细节，我们并不关心。</li>
+<li>关注某一个方法的输入与输出</li>
+</ul>
+</li>
+<li>android项目里运行单元测试<ul>
+<li>Android gradle project，源码默认在 <code>src/main/java</code>，单元测试代码在<code>src/test/java</code>下</li>
+<li>单元测试中的包名可以随意定，一般使用 包名+test，如果只使用包名，重命名包名时会修改源码的包名，造成麻烦</li>
+</ul>
+</li>
+</ol>
+<h2 id="Android单元测试的痛点"><a href="#Android单元测试的痛点" class="headerlink" title="Android单元测试的痛点"></a>Android单元测试的痛点</h2><ol>
+<li>JVM上运行纯Junit单元测试时是不能使用Android相关的类的<ul>
+<li>使用Android仪器测试，将单元测试运行在模拟器或真机上。 慢</li>
+<li>使用一定架构来隔离，比如MVP Presenter层 完全使用Java实现，进行单元测试， View层等Android相关的代码不测试</li>
+<li>使用Robolectric，在JVM上实现安卓模拟的环境；<ul>
+<li>大神经验：如果架构将android代码和java代码完全分离，还是尽量不用，因为这个还是需要merge一些资源，速度还是慢；如果刚开始，从Robolectric开始是完全OK的。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>痛点解决方案时间对比<ul>
+<li>Instrumentation： 几十秒 取决于app大小</li>
+<li>Robolectric：10秒左右</li>
+<li>JUnit： 几秒钟内</li>
+</ul>
+</li>
+</ol>
+<h2 id="单元测试使用依赖注入"><a href="#单元测试使用依赖注入" class="headerlink" title="单元测试使用依赖注入"></a>单元测试使用依赖注入</h2><ol>
+<li>什么是依赖注入，<br> 简单说就是一个类中使用的内部对象，不在类内部去创建，而是由外部创建好对象，再通过某种方式set给类。比如DataActivity，用到的DataModel对象，DataModel对象的创建过程不再DataActivity内，而是由外部创建好在设置到DataActivity中</li>
+<li>Dagger2中的几个概念<ul>
+<li>Client： 使用到别的类的地方</li>
+<li>Dependency：被其他类使用的类</li>
+<li>Module： 用于创建Dependency的地方</li>
+<li>Component：提供Client使用Dependency的统一接口</li>
+</ul>
+</li>
+<li>Dagger2 提供Client获取Dependency的一种框架</li>
+<li>单元测试使用依赖注入的方式<ul>
+<li>首先，要明确 Dependency 产生的地方是在 Moudel，而不是Component</li>
+<li>正式代码中，使用正常的Module生成正常的dependency,测试环境中使用测试Module生产mock的dependency</li>
+</ul>
+</li>
+</ol>
+<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><h3 id="Android单元测试方式"><a href="#Android单元测试方式" class="headerlink" title="Android单元测试方式"></a>Android单元测试方式</h3><blockquote>
+<p>Android项目进行单元测试的基本流程</p>
+</blockquote>
+<h3 id="哪些东西需要测试？"><a href="#哪些东西需要测试？" class="headerlink" title="哪些东西需要测试？"></a>哪些东西需要测试？</h3><ol>
+<li>所有的 Model，Presenter/ViewModel，Api，Utils的public方法</li>
+<li>Data类中，除了getter，setter，toString等自动生成的方法之外的逻辑部分</li>
+<li>自定义View的功能，比如setData之后界面的变化，简单的交互，比如点击事件，复杂的交互一般不测试，不如touch以及滑动事件等等</li>
+<li>Activity的主要功能：比如view是不是存在、显示数据、错误信息、简单的点击事件等。比较复杂的交互一般不测试，比如onTouch以及view的样式、位置等</li>
+</ol>
+<h3 id="大神遇到的坑以及practice建议"><a href="#大神遇到的坑以及practice建议" class="headerlink" title="大神遇到的坑以及practice建议"></a>大神遇到的坑以及practice建议</h3><ol>
+<li><p>Native library<br> 单元测试都不支持load native library，会报 <code>UnsatisfiedLinkError</code>  </p>
+<p> <strong>出现的情形：</strong></p>
+<ol>
+<li>被测代码里面用到了native lib， 可能需要给<code>System.loadLibrary</code>加上<code>try catch</code></li>
+<li>被测代码用到的第三方lib，一般两种解决情况<ul>
+<li>将用到 <code>native lib</code>的第三方类外面包一层，测试的情况下mock掉<ul>
+<li>优点：是可以在测试的时候随时改变这个类的返回值或行为，</li>
+<li>缺点：需要额外的创建wrapper类</li>
+</ul>
+</li>
+<li>使用 Robolectric ，给类创建一个shadow class<ul>
+<li>优点： 写起来十分简单</li>
+<li>缺点： 随时改变这个类的行为</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p> <strong>注：</strong><br> 这两种方法，也是解决 <code>static method</code>,<code>final class/method</code>不能mock的主要方式</p>
+</li>
+<li><p>尽量写出易于测试的代码<br> static method，直接 new object，singleton，Global state 等等这些都不利于测试，应该尽量避免，采用依赖注入来代替这些方式</p>
+</li>
+<li><p>不要重复你的单元测试<br> 不如构建者模式创建的类，其中又一个validator来检验参数情况。这是builder和validator应该分开测试，好处是如果validator的测试改变了，这时就不需要修改builder相关的测试。</p>
+</li>
+<li><p>公共的单元测试library<br> 组件化开发的话，可以抽出一个公共的单元测试类库来做单元测试，里面可以放公共的 helper、utils、rules等等，这将极大的提高写单元测试的速度</p>
+</li>
+<li><p>把Android中的”纯java”代码copy一份到自己的项目里<br> Android中的有些类，比如TextUtils、Color等，这些完全可以copy出来，这样部分功能也可以使用 JUnit而不是Robolectric进行</p>
+</li>
+<li><p>充分发挥JUnit Rule的作用<br> JUnit Rule基本作用是，让你在执行某个测试方法的前后，做一些工作。如果你的测试类中有很多共同的setup，teardown工作，需要结合@Before @After来减少duplication， 如果使用JUnit Rule来完成，会有更大的灵活性。<br> <strong>一个值得实践的Rule:</strong><br> 自定义一个annotation，annotation接受一个String，用于描述测试方法的测试目的。在Rule里面将这个annotation读出来，如果测试没有通过，把这个描述性的String驾到error message里面进行输出。这样在做测试方法的命名就可以比较简单啦。</p>
+</li>
+<li><p>利用AndroidStudio来加快写测试的速度<br> AndroidStudio的很多功能可以帮助我们更快的写代码，比如 code generation和live template。这对写正式代码也适用，但是写测试代码效果更为突出，因为大部分测试代码的结构和风格都是类似的。</p>
+</li>
+<li><p>不要追求完美<br> 刚开始不用追求测试代码的质量与完美，不好写测试的地方可以先放一放，等之后来补。有部分测试总比没有测试好。</p>
+</li>
+</ol>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://chriszou.com/2016/04/25/android-unit-testing-wechat-group-share.html" target="_blank" rel="noopener">Android单元测试在蘑菇街支付金融部门的实践</a></p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-02T13:08:33+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年12月2日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Android/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Android</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/TDD/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>TDD</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/10/28/kotlin-高阶函数/" rel="prev" title="kotlin 高阶函数">
+                                  
+                                      kotlin 高阶函数
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/kotlin/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> kotlin</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '单元测试学习笔记',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -330,47 +550,36 @@
         
           
           
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
             
-              <section class='widget list'>
-  
+              
+  <section class='widget toc-wrapper'>
+    
 <header class='pure'>
-  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;推荐学习</div>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
   
 </header>
 
-  <div class='content pure'>
-    <ul class="entry">
-      
-        <li><a class="flat-box" title="http://www.extremeprogramming.cn/content/xp/user-story.html" href="http://www.extremeprogramming.cn/content/xp/user-story.html"
-          
-          
-          >
-          <div class='name'>
-            
-              <i class=" fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;极限编程
-          </div>
-          
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单元测试学习笔记"><span class="toc-text">单元测试学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android单元测试的痛点"><span class="toc-text">Android单元测试的痛点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试使用依赖注入"><span class="toc-text">单元测试使用依赖注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#经验总结"><span class="toc-text">经验总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android单元测试方式"><span class="toc-text">Android单元测试方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#哪些东西需要测试？"><span class="toc-text">哪些东西需要测试？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大神遇到的坑以及practice建议"><span class="toc-text">大神遇到的坑以及practice建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
 
             
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
           
         
       
@@ -549,6 +758,76 @@
           
         
       
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;推荐学习</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="http://www.extremeprogramming.cn/content/xp/user-story.html" href="http://www.extremeprogramming.cn/content/xp/user-story.html"
+          
+          
+          >
+          <div class='name'>
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;极限编程
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
     
 
   
@@ -594,14 +873,6 @@
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
       <script>setLoadingBarProgress(60);</script>
