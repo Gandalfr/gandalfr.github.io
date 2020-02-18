@@ -296,7 +296,7 @@
         <p>本文主要介绍开始单元测试的一些思路。自从接触了测试驱动开发，一直想在Android开发时引入单元测试来提高开发的效率与质量。国内在单元测试方面的实践经验不太容易找，本篇文章是在大佬的博文基础上做了一些整理。</p>
 <a id="more"></a>
 
-<h1 id="单元测试学习笔记"><a href="#单元测试学习笔记" class="headerlink" title="单元测试学习笔记"></a>单元测试学习笔记</h1><blockquote>
+<blockquote>
 <p>持续更新</p>
 </blockquote>
 <h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><ol>
@@ -402,7 +402,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-02T13:08:33+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-02T18:03:29+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2019年12月2日</p>
@@ -431,6 +431,25 @@
       
       
           <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2020/02/18/Android-Activity-Lifecycle/" rel="prev" title="Android Activity Lifecycle">
+                                
+                                    Android Activity Lifecycle
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/Android/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Android</a> <a class="tag" href="/tags/ReadingNote/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> ReadingNote</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
               
               
                   <section class="next">
@@ -562,7 +581,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单元测试学习笔记"><span class="toc-text">单元测试学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android单元测试的痛点"><span class="toc-text">Android单元测试的痛点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试使用依赖注入"><span class="toc-text">单元测试使用依赖注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#经验总结"><span class="toc-text">经验总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android单元测试方式"><span class="toc-text">Android单元测试方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#哪些东西需要测试？"><span class="toc-text">哪些东西需要测试？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大神遇到的坑以及practice建议"><span class="toc-text">大神遇到的坑以及practice建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android单元测试的痛点"><span class="toc-text">Android单元测试的痛点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试使用依赖注入"><span class="toc-text">单元测试使用依赖注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#经验总结"><span class="toc-text">经验总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android单元测试方式"><span class="toc-text">Android单元测试方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#哪些东西需要测试？"><span class="toc-text">哪些东西需要测试？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大神遇到的坑以及practice建议"><span class="toc-text">大神遇到的坑以及practice建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -687,9 +706,11 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/Android/" href="/categories/Android/"><div class='name'>Android</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/Android/" href="/categories/Android/"><div class='name'>Android</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/Android/NDK/" href="/categories/Android/NDK/"><div class='name'>NDK</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/Android/ReadingNote/" href="/categories/Android/ReadingNote/"><div class='name'>ReadingNote</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/Android/TDD/" href="/categories/Android/TDD/"><div class='name'>TDD</div><div class='badge'>(1)</div></a></li>
         
@@ -746,7 +767,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/NDK/" style="font-size: 14px; color: #999">NDK</a> <a href="/tags/Other/" style="font-size: 14px; color: #999">Other</a> <a href="/tags/TDD/" style="font-size: 14px; color: #999">TDD</a> <a href="/tags/kotlin/" style="font-size: 14px; color: #999">kotlin</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/NDK/" style="font-size: 14px; color: #999">NDK</a> <a href="/tags/Other/" style="font-size: 14px; color: #999">Other</a> <a href="/tags/ReadingNote/" style="font-size: 14px; color: #999">ReadingNote</a> <a href="/tags/TDD/" style="font-size: 14px; color: #999">TDD</a> <a href="/tags/kotlin/" style="font-size: 14px; color: #999">kotlin</a>
     </div>
   </section>
 
