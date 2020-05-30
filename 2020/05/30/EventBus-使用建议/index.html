@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>EventBus 使用建议 | Huasababy | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content>
+  <meta name="description" content="之前项目在做组件化的调整，组件间的通信是用的类似Event Bus的订阅-发布方式进行的，在多线程的情况下没有好好处理，因此学习一些Event Bus的处理方式，这里先翻译了一篇EventBus的使用建议。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EventBus 使用建议">
+<meta property="og:url" content="http://yoursite.com/2020/05/30/EventBus-使用建议/index.html">
+<meta property="og:site_name" content="Huasababy">
+<meta property="og:description" content="之前项目在做组件化的调整，组件间的通信是用的类似Event Bus的订阅-发布方式进行的，在多线程的情况下没有好好处理，因此学习一些Event Bus的处理方式，这里先翻译了一篇EventBus的使用建议。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-30T04:38:17.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EventBus 使用建议">
+<meta name="twitter:description" content="之前项目在做组件化的调整，组件间的通信是用的类似Event Bus的订阅-发布方式进行的，在多线程的情况下没有好好处理，因此学习一些Event Bus的处理方式，这里先翻译了一篇EventBus的使用建议。">
+  
+    <link rel="alternative" href="/atom.xml" title="Huasababy" type="application/atom+xml">
+  
+  <meta name="summary" content="&lt;p&gt;之前项目在做组件化的调整，组件间的通信是用的类似Event Bus的订阅-发布方式进行的，在多线程的情况下没有好好处理，因此学习一些Event Bus的处理方式，这里先翻译了一篇EventBus的使用建议。&lt;/p&gt;">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/doge.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Huasababy</h5>
+        <a href="mailto:lueho110@gmail.com" title="lueho110@gmail.com" class="mail">lueho110@gmail.com</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              Archives
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              Tags
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Huasababy &copy; 2020</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">EventBus 使用建议</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">EventBus 使用建议</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2020-05-30T04:34:40.000Z" itemprop="datePublished" class="page-time">
+  2020-05-30
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-EventBus-使用建议" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">解决的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现注意"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现注意</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存在的问题及相应思考"><span class="post-toc-number">3.</span> <span class="post-toc-text">存在的问题及相应思考</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用建议"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用建议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于Android开发的使用建议"><span class="post-toc-number">5.</span> <span class="post-toc-text">对于Android开发的使用建议</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <p>之前项目在做组件化的调整，组件间的通信是用的类似Event Bus的订阅-发布方式进行的，在多线程的情况下没有好好处理，因此学习一些Event Bus的处理方式，这里先翻译了一篇EventBus的使用建议。</p>
+<a id="more"></a>
+
+<p>内容主要翻译于:<a href="https://www.techyourchance.com/event-bus/" target="_blank" rel="noopener">Event Bus: Pros, Cons and Best Practices</a></p>
+<h2 id="解决的问题"><a href="#解决的问题" class="headerlink" title="解决的问题"></a>解决的问题</h2><blockquote>
+<p>既然是框架，我们首先应该来聊一聊它解决的问题</p>
+</blockquote>
+<ul>
+<li>使用观察者模式，通过线程传递事件，解决类与类之间的依赖关系，达到解耦的目的</li>
+</ul>
+<h2 id="实现注意"><a href="#实现注意" class="headerlink" title="实现注意"></a>实现注意</h2><ul>
+<li>观察者模式<ul>
+<li>Publish-Subscribe 发布-订阅模式</li>
+<li>发布者和订阅者去除直接耦合，因此降低了系统的整体耦合性</li>
+</ul>
+</li>
+<li>线程安全</li>
+</ul>
+<h2 id="存在的问题及相应思考"><a href="#存在的问题及相应思考" class="headerlink" title="存在的问题及相应思考"></a>存在的问题及相应思考</h2><ul>
+<li>降低了整体的耦合，真的如此？<ul>
+<li>理论上，通过event bus 没有了直接的方法调用；最终实现组件不会直接的产生内部依赖；</li>
+<li>实际上，如果A模块与B模块，为了用Event bus代替A调用一个B的方法，但A与B都要多依赖一个事件作为通信</li>
+<li>另外一个问题，如果A调用B的一个方法，如果调用时类型错了，或是参数的问题都会在编译时提示错误，如果使用Event bus 将不会有错误，但是同样带来的还有方法的错误，导致不易在开发期排查，由用户直接接触到问题</li>
+</ul>
+</li>
+<li>在实现方式上，如果你开发的代码不希望其他开发人员去跟踪事件、生命周期来梳理整个逻辑，简单的方法调用将是哥更好的选择</li>
+</ul>
+<h2 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h2><ul>
+<li>默认不实用 Event Bus 用作通信手段</li>
+<li>当组件间的不易建立起直接的通信，考虑使用 Event bus</li>
+<li>避免组件自己又是发布者又是订阅者</li>
+<li>避免事件链条，即需要多个有序的事件来完成流程</li>
+<li>便携测试来弥补不足依赖，确保组件间的完整</li>
+<li>将事件类分类，整理在相应代表起功能的包中</li>
+</ul>
+<p>补充：</p>
+<ul>
+<li>对事件的发布者和订阅者隔离封装使用(上面第二点)，在划分功能时需要更明确类时作为发布者还是订阅者单独存在的，这一点对长期可维护性非常重要<ul>
+<li>这一点也同时是接口隔离的极佳表现</li>
+</ul>
+</li>
+</ul>
+<h2 id="对于Android开发的使用建议"><a href="#对于Android开发的使用建议" class="headerlink" title="对于Android开发的使用建议"></a>对于Android开发的使用建议</h2><ul>
+<li>推荐使用 EventBus library<ul>
+<li>即使你可以通过 RxJava 短短几行来实现</li>
+<li>就算是很喜欢DIY</li>
+</ul>
+</li>
+<li>默认在所有订阅者使用 <code>ThreadMode.MAIN_ORDERED</code> </li>
+<li>不要将 EventBus放在多线程的情形下进行使用</li>
+<li>粘性事件的使用，代表这将会将应用的一部分状态存储在 EventBus，这种取舍在大多数情况是不合理的</li>
+<li>不应使用 EventBus的注释，如果用到了，你需要重新评价这个设计<ul>
+<li>我想到的情况为，大量使用使用事件导致需要 订阅者索引(Subscriber Index)来辅助索引</li>
+</ul>
+</li>
+</ul>
+<p>如果使用了这个工具，它让你的生活变得更简单。多处这种处理并不是最佳的(non-optimal)，这将导致维护方面的问题，需要小心</p>
+<p>常用场景</p>
+<ul>
+<li>将用户在DialogFragment中的交互同志到其宿主Activity或Fragment</li>
+<li>从Services中发送Activity或Fragment</li>
+<li>多屏状态下，非主线程的通信</li>
+</ul>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://yoursite.com/2020/05/30/EventBus-使用建议/" target="_blank" rel="external">http://yoursite.com/2020/05/30/EventBus-使用建议/</a>
+                </p>
+                <footer><cite><a href="http://yoursite.com">@Huasababy</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2020/02/18/Android-Activity-Lifecycle/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android Activity Lifecycle</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="EventBus-使用建议" data-title="EventBus 使用建议" data-url="http://yoursite.com/2020/05/30/EventBus-使用建议/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ysblog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wx_get.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+    </ul>
+</div>
+
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "EventBus 使用建议",
+    pic: "/img/doge.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://yoursite.com/2020/05/30/EventBus-使用建议/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
